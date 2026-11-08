@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Assinatura de email — Impulso Invicto</title>
+<style>
+  body{margin:0;background:#f4f3f0;color:#1a1a1d;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:620px;margin:0 auto;padding:32px 16px}
+  h1{font-size:1.15rem;margin:0 0 4px}
+  p.help{margin:0 0 20px;color:#5b5b63;font-size:.92rem}
+  .card{background:#fff;border:1px solid #e3e1db;border-radius:10px;padding:28px 24px;margin-bottom:16px}
+  button{font:inherit;font-size:.9rem;padding:9px 16px;border-radius:8px;border:1px solid #1a1a1d;background:#1a1a1d;color:#fff;cursor:pointer}
+  button:focus-visible{outline:2px solid #a8853f;outline-offset:2px}
+  #msg{margin-left:10px;font-size:.85rem;color:#6b6b73}
+  ol{padding-left:20px;font-size:.9rem;color:#3a3a40}
+  li{margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Assinatura de email — info@impulsoinvicto.pt</h1>
+  <p class="help">Seleciona apenas a assinatura (ou usa o botão) e cola-a nas definições de assinatura do Mail.</p>
+
+  <div class="card">
+    <div id="sig">
+<!-- ASSINATURA: início -->
+<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Helvetica,Arial,sans-serif;">
+  <tr>
+    <td style="padding:0 16px 0 0;vertical-align:middle;">
+      <a href="https://impulsoinvicto.pt" style="text-decoration:none;"><img src="https://raw.githubusercontent.com/TiagoStaalChaves/impulsoinvicto-site/main/assinatura/escudo.png" width="64" height="59" alt="Impulso Invicto" style="display:block;border:0;width:64px;height:59px;"></a>
+    </td>
+    <td style="padding:0 0 0 16px;vertical-align:middle;border-left:1px solid #c9a95c;">
+      <div style="font-size:15px;font-weight:bold;letter-spacing:2px;line-height:18px;">IMPULSO <span style="color:#a8853f;">INVICTO</span></div>
+      <div style="font-size:11px;letter-spacing:1.5px;color:#7a7a82;line-height:16px;padding-top:4px;text-transform:uppercase;">Eventos &middot; Marketing &middot; Consultoria</div>
+      <div style="font-size:12px;line-height:17px;padding-top:6px;">
+        <a href="https://impulsoinvicto.pt" style="color:#a8853f;text-decoration:none;">impulsoinvicto.pt</a>
+        <span style="color:#b0b0b6;">&nbsp;|&nbsp;</span>
+        <a href="mailto:info@impulsoinvicto.pt" style="color:#7a7a82;text-decoration:none;">info@impulsoinvicto.pt</a>
+      </div>
+    </td>
+  </tr>
+</table>
+<!-- ASSINATURA: fim -->
+    </div>
+  </div>
+
+  <button id="copy" type="button">Copiar assinatura</button><span id="msg"></span>
+
+  <div class="card" style="margin-top:24px">
+    <strong>Mac (Mail)</strong>
+    <ol>
+      <li>Mail → Definições → Assinaturas → escolhe a conta info@ → <b>+</b>.</li>
+      <li>Desativa "Usar sempre o tipo de letra padrão das mensagens".</li>
+      <li>Apaga o texto da nova assinatura e cola (⌘V).</li>
+    </ol>
+    <strong>iPhone</strong>
+    <ol>
+      <li>Abre esta página no Safari do iPhone e carrega em "Copiar assinatura".</li>
+      <li>Definições → Apps → Mail → Assinatura → "Por conta" → info@ → apaga o texto e cola.</li>
+      <li>Se a formatação mudar, abana o iPhone e escolhe "Anular alteração de atributos".</li>
+    </ol>
+  </div>
+</div>
+<script>
+document.getElementById('copy').addEventListener('click', async function(){
+  var el=document.getElementById('sig'), msg=document.getElementById('msg');
+  try{
+    var html=el.innerHTML, text=el.innerText;
+    await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([text],{type:'text/plain'})})]);
+    msg.textContent='Copiada.';
+  }catch(e){
+    var r=document.createRange(); r.selectNodeContents(el); var s=getSelection(); s.removeAllRanges(); s.addRange(r);
+    try{document.execCommand('copy'); msg.textContent='Copiada.';}catch(_){msg.textContent='Selecionada — copia com ⌘C.';}
+  }
+});
+</script>
+</body>
+</html>
